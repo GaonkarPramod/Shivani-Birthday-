@@ -11,7 +11,7 @@
       font-family: 'Arial', sans-serif;
       text-align: center;
       color: #333;
-      overflow: hidden; /* for confetti */
+      overflow-x: hidden;
     }
     h1 {
       margin-top: 5%;
@@ -29,12 +29,6 @@
       margin-top: 20px;
       color: #fff;
     }
-    img {
-      margin-top: 20px;
-      width: 300px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px #fff;
-    }
     .surprise {
       margin-top: 30px;
       font-size: 1.2em;
@@ -51,17 +45,14 @@
       font-size: 1.5em;
       color: #fff;
     }
-    /* Confetti style */
-    .confetti {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background-color: red;
-      animation: fall 5s linear infinite;
-    }
-    @keyframes fall {
-      0% { transform: translateY(-10px) rotate(0deg); }
-      100% { transform: translateY(100vh) rotate(360deg); }
+    #photo {
+      display: none;
+      margin-top: 30px;
+      width: 100%;
+      max-height: 90vh;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #fff;
     }
   </style>
 </head>
@@ -69,11 +60,11 @@
   <h1>🎂 Happy Birthday Dear 🎂</h1>
   <p>Wishing you joy, love, and endless happiness!</p>
 
-  <!-- Birthday photo -->
-  <img src="birthday.jpg" alt="Birthday Celebration">
-
-  <button class="surprise" onclick="showMessage()">Click for Surprise 💖</button>
+  <button class="surprise" onclick="showSurprise()">Click for Surprise 💖</button>
   <div id="message">You make the world brighter 🌎✨. Have the best birthday ever! 🎉💐</div>
+
+  <!-- Hidden photo -->
+  <img id="photo" src="birthday.jpg" alt="Birthday Celebration">
 
   <!-- Background music -->
   <audio autoplay loop>
@@ -81,21 +72,10 @@
   </audio>
 
   <script>
-    function showMessage() {
+    function showSurprise() {
       document.getElementById('message').style.display = 'block';
+      document.getElementById('photo').style.display = 'block';
     }
-
-    // Confetti generator
-    function createConfetti() {
-      const confetti = document.createElement('div');
-      confetti.className = 'confetti';
-      confetti.style.left = Math.random() * window.innerWidth + 'px';
-      confetti.style.backgroundColor = ['red','blue','yellow','green','pink'][Math.floor(Math.random()*5)];
-      confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
-      document.body.appendChild(confetti);
-      setTimeout(() => confetti.remove(), 5000);
-    }
-    setInterval(createConfetti, 200);
   </script>
 </body>
 </html>
