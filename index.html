@@ -66,8 +66,8 @@
   <!-- Hidden photo -->
   <img id="photo" src="birthday.jpg" alt="Birthday Celebration">
 
-  <!-- Background music -->
-  <audio autoplay loop>
+  <!-- Hidden audio -->
+  <audio id="music" loop>
     <source src="birthday.mp3" type="audio/mpeg">
   </audio>
 
@@ -75,6 +75,7 @@
     function showSurprise() {
       document.getElementById('message').style.display = 'block';
       document.getElementById('photo').style.display = 'block';
+      document.getElementById('music').play(); // Play music on click
     }
   </script>
 </body>
